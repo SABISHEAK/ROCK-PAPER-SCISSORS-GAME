@@ -1,0 +1,111 @@
+//ROCK-PAPERS-SCISSORS GAME :
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+char getUserChoice();
+char getComputerChoice();
+void showChoice(char choice);
+void getWinner(char player , char computer);
+
+int main() {
+    
+    char player;
+    char computer;
+    
+    player = getUserChoice();
+    cout <<"Your Choice : " ;
+    showChoice(player);
+    
+    computer = getComputerChoice();
+    cout <<"Computer's Choice : ";
+    showChoice(computer);
+    
+    getWinner(player,computer);
+    
+    
+
+    return 0;
+}
+
+char getUserChoice(){
+    
+    char player;
+    
+    cout <<"Rock-Paper-Scissors Game\n";
+   do{
+    cout <<"Choose one of the following\n";  
+    cout <<"************************\n";
+    cout <<"'r' for Rock\n";
+    cout <<"'p' for Paper\n";
+    cout <<"'s' for Scissor\n";
+    cin >> player;  
+   }while(player != 'r' && player != 'p' && player != 's');
+    
+    return player;   //VERY IMPORTANT .
+}
+char getComputerChoice(){
+    
+    srand(time(0));
+    int cc = rand() % 3 + 1;
+    switch(cc){
+        case 1:return 'r';
+              break;
+        case 2:return 'p';
+              break;
+        case 3:return 's';
+              break;      
+    }
+    return 0;
+}  //IMPORTANT .
+void showChoice(char choice){
+    switch(choice){
+        case 'r': cout<<"Rock\n";
+                break;
+        case 'p': cout<<"Paper\n";
+                break;
+        case 's': cout<<"Scissors\n";
+                break;
+    }
+    
+}
+void getWinner(char player,char computer){
+    
+    switch(player){
+        case 'r':   if(computer == 'r'){
+                        cout <<"It's a tie";
+                   }
+                   else if(computer == 'p'){
+                        cout <<"You loose !!";
+                   }
+                   else{
+                        cout <<"!! You Win !!";
+                   }
+                break;   
+        case 'p':   if(computer == 'r'){
+                        cout <<"!! You Win !!";
+                   }
+                   else if(computer == 'p'){
+                        cout <<"It's a tie";
+                   }
+                   else{
+                        cout <<"You loose !!";
+                   }
+                break;   
+        case 's':   if(computer == 'r'){
+                        cout <<"You loose !!";
+                   }
+                   else if(computer == 'p'){
+                        cout <<"!! You Win !!";
+                   }
+                   else{
+                        cout <<"It's a tie";
+                   } 
+                break;   
+    }
+    
+}
